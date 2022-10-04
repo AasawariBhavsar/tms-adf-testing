@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "tms-testing-data-factory"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureFunctionNewFile_functionKey": {
+			"value": ""
+		},
+		"AzureFunctionNewFile_properties_typeProperties_functionAppUrl": {
+			"value": "https://employeefunction20220926145947.azurewebsites.net"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://AKVtmstesting.vault.azure.net/"
+		},
+		"AzureKeyVault2_properties_typeProperties_baseUrl": {
+			"value": "https://AKVtmstesting.vault.azure.net/"
+		},
+		"new file trigger_properties_pipeline1_parameters_triggerFileName": {
+			"value": "@triggerBody().fileName"
+		},
+		"new file trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/8dd5d9a4-5663-475f-9942-5251860bd20d/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/tmstesting"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

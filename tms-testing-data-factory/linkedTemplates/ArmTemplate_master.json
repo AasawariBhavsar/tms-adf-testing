@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "tms-testing-data-factory"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureFunctionNewFile_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunctionNewFile'"
+		},
+		"AzureFunctionNewFile_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://employeefunction20220926145947.azurewebsites.net"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://AKVtmstesting.vault.azure.net/"
+		},
+		"AzureKeyVault2_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://AKVtmstesting.vault.azure.net/"
+		},
+		"new file trigger_properties_pipeline1_parameters_triggerFileName": {
+			"type": "string",
+			"defaultValue": "@triggerBody().fileName"
+		},
+		"new file trigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/8dd5d9a4-5663-475f-9942-5251860bd20d/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/tmstesting"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "tms-testing-data-factory_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureFunctionNewFile_functionKey": {
+						"value": "[parameters('AzureFunctionNewFile_functionKey')]"
+					},
+					"AzureFunctionNewFile_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('AzureFunctionNewFile_properties_typeProperties_functionAppUrl')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureKeyVault2_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault2_properties_typeProperties_baseUrl')]"
+					},
+					"new file trigger_properties_pipeline1_parameters_triggerFileName": {
+						"value": "[parameters('new file trigger_properties_pipeline1_parameters_triggerFileName')]"
+					},
+					"new file trigger_properties_typeProperties_scope": {
+						"value": "[parameters('new file trigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
