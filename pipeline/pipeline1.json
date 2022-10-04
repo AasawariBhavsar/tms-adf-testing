@@ -1,0 +1,43 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Azure Function1",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "Function1",
+					"method": "GET",
+					"headers": {
+						"filename": {
+							"value": "@pipeline().parameters.triggerFileName",
+							"type": "Expression"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunctionNewFile",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"triggerFileName": {
+				"type": "string",
+				"defaultValue": "Sample-Spreadsheet-10-rows.csv"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-10-01T10:00:18Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

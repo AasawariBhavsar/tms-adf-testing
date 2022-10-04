@@ -1,0 +1,9 @@
+{
+	"name": "tms-testing-data-factory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "f44c1286-b470-432c-88d0-9df5e99a2349",
+		"tenantId": "c2319261-66d0-4885-a8dd-ed304500ed3d"
+	}
+}
