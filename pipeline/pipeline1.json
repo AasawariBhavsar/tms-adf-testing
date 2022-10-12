@@ -32,8 +32,7 @@
 		],
 		"parameters": {
 			"triggerFileName": {
-				"type": "string",
-				"defaultValue": "Sample-Spreadsheet-10-rows.csv"
+				"type": "string"
 			}
 		},
 		"annotations": [],
